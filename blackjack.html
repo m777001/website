@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Dealer's Points & Stand -->
+    <div id="deal-data">
+        <span id="deal-stand">STAND</span>
+        Dealer's Hand - <span id="deal-points">?</span>
+    </div>
+
+    <!-- Dealer's Cards -->
+    <div id="deal-cards"></div>
+
+    <!-- Player's Points & Stand -->
+    <div id="play-data">
+        <span id="play-stand">STAND</span>
+        Your Hand - <span id="play-points">0</span>
+    </div>
+
+    <!-- Player's Cards -->
+    <div id="play-cards"></div>
+
+    <!-- Game Controls -->
+    <div id="play-control">
+        <input type="button" id="playc-start" value="Play!">
+        <input type="button" id="playc-hit" value="Hit">
+        <input type="button" id="playc-stand" value="Stand">
+    </div>
+
+    <script src="blackjack.js"></script>
+</body>
+</html>
