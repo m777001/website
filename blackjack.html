@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="blackjack.css">
+</head>
+<body>
+    <!-- Main content initially hidden until passphrase is correct -->
+    <div id="content" class="container hidden">
+        <h1>The Canyon Strategy</h1>
+        
+        <div class="form-group">
+            <label for="hand-type">Hand Type:</label>
+            <div class="hand-type-buttons">
+                <button id="hard" class="hand-type-button" onclick="selectHandType('hard')">Hard</button>
+                <button id="soft" class="hand-type-button" onclick="selectHandType('soft')">Soft</button>
+                <button id="pair" class="hand-type-button" onclick="selectHandType('pair')">Pair</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="hand-value">Your Hand:</label>
+            <input type="text" id="hand-value" placeholder="e.g., 16 for Hard, 17 for Soft, 8 for Pair" oninput="displayStrategy()">
+        </div>
+
+        <div class="form-group">
+            <label for="dealer-card">Dealer's Up Card:</label>
+            <select id="dealer-card" onchange="displayStrategy()">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="A">A</option>
+            </select>
+        </div>
+        
+        <div id="result" class="result">Choose your hand type, enter your hand, and select the dealer's card to see the strategy.</div>
+
+        <div id="input-guide" class="input-guide">Select a hand type to see accepted inputs for "Your Hand".</div>
+    </div>
+
+    <!-- Passphrase overlay -->
+    <div id="passphrase-overlay" class="overlay">
+        <div class="passphrase-container">
+            <h2>Pump The Brakes!</h2>
+            <input type="password" id="passphrase-input" placeholder="Enter the password" />
+            <button id="submit-btn">Submit</button>
+        </div>
+    </div>
+
+    <script src="blackjack.js"></script>
+    <script src="passphrase.js"></script>
+</body>
+</html>
