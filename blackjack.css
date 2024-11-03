@@ -191,3 +191,31 @@ input:focus, select:focus {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+
+/* Responsive styling for mobile */
+@media (max-width: 600px) {
+    .container, .passphrase-container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .passphrase-container input, .passphrase-container button {
+        font-size: 1em;
+    }
+
+    .hand-type-button {
+        font-size: 0.9em;
+    }
+
+    .form-group {
+        padding: 10px;
+    }
+
+    .result, .input-guide {
+        font-size: 0.95em;
+    }
+}
