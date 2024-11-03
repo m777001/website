@@ -42,21 +42,45 @@ const strategyTable = {
     }
 };
 
+// Action mapping to display full names
+const actionMap = {
+    'S': 'STAND',
+    'H': 'HIT',
+    'D': 'DOUBLE DOWN',
+    'Ds': 'DOUBLE DOWN IF ALLOWED, OTHERWISE STAND',
+    'Y': 'SPLIT',
+    'Y/N': 'SPLIT IF DOUBLE AFTER SPLIT (DAS) IS ALLOWED, OTHERWISE DO NOT SPLIT',
+    'SUR': 'SURRENDER',
+    'N': 'DO NOT SPLIT'
+};
+
 // Function to get the strategy recommendation
 function getStrategy(playerHandType, playerHandValue, dealerCard) {
+    let action = '';
     if (playerHandType === 'pair' && strategyTable.pairs[playerHandValue]) {
-        return strategyTable.pairs[playerHandValue][dealerCard] || 'N/A';
+        action = strategyTable.pairs[playerHandValue][dealerCard];
+    } else if (playerHandType === 'soft' && strategyTable.soft[playerHandValue]) {
+        action = strategyTable.soft[playerHandValue][dealerCard];
+    } else if (playerHandType === 'hard' && strategyTable.hard[playerHandValue]) {
+        action = strategyTable.hard[playerHandValue][dealerCard];
+    } else if (strategyTable.surrender[playerHandValue]) {
+        action = strategyTable.surrender[playerHandValue][dealerCard];
     }
-    if (playerHandType === 'soft' && strategyTable.soft[playerHandValue]) {
-        return strategyTable.soft[playerHandValue][dealerCard] || 'N/A';
+    return actionMap[action] || 'Invalid input';
+}
+
+// Function to update placeholder based on hand type selection
+function updatePlaceholder() {
+    const handType = document.getElementById('hand-type').value;
+    const handValueInput = document.getElementById('hand-value');
+    
+    if (handType === 'hard') {
+        handValueInput.placeholder = "e.g., 16";
+    } else if (handType === 'soft') {
+        handValueInput.placeholder = "e.g., A,7";
+    } else if (handType === 'pair') {
+        handValueInput.placeholder = "Pairs of ? (e.g., 6)";
     }
-    if (playerHandType === 'hard' && strategyTable.hard[playerHandValue]) {
-        return strategyTable.hard[playerHandValue][dealerCard] || 'N/A';
-    }
-    if (strategyTable.surrender[playerHandValue]) {
-        return strategyTable.surrender[playerHandValue][dealerCard] || 'N/A';
-    }
-    return 'Invalid input';
 }
 
 // Event listener to get the result
@@ -65,23 +89,6 @@ document.getElementById('get-strategy').addEventListener('click', () => {
     const playerHandValue = document.getElementById('hand-value').value;
     const dealerCard = document.getElementById('dealer-card').value;
 
-    const strategy = getStrategy(playerHandType, playerHandValue, dealerCard).toUpperCase();
+    const strategy = getStrategy(playerHandType, playerHandValue, dealerCard);
     document.getElementById('result').textContent = strategy;
 });
-
-// Update placeholder based on hand type selection
-function updatePlaceholder() {
-    const handType = document.getElementById('hand-type').value;
-    const handValueInput = document.getElementById('hand-value');
-
-    if (handType === 'hard') {
-        handValueInput.placeholder = "e.g., 16";
-    } else if (handType === 'soft') {
-        handValueInput.placeholder = "e.g., A,6";
-    } else if (handType === 'pair') {
-        handValueInput.placeholder = "e.g., 8,8";
-    }
-}
-
-// Initialize placeholder on page load
-updatePlaceholder();
