@@ -57,8 +57,8 @@ const actionMap = {
 // Function to get the strategy recommendation
 function getStrategy(playerHandType, playerHandValue, dealerCard) {
     let action = '';
-    if (playerHandType === 'pair' && strategyTable.pairs[playerHandValue]) {
-        action = strategyTable.pairs[playerHandValue][dealerCard];
+    if (playerHandType === 'pair' && strategyTable.pairs[`${playerHandValue},${playerHandValue}`]) {
+        action = strategyTable.pairs[`${playerHandValue},${playerHandValue}`][dealerCard];
     } else if (playerHandType === 'soft' && strategyTable.soft[playerHandValue]) {
         action = strategyTable.soft[playerHandValue][dealerCard];
     } else if (playerHandType === 'hard' && strategyTable.hard[playerHandValue]) {
@@ -69,23 +69,31 @@ function getStrategy(playerHandType, playerHandValue, dealerCard) {
     return actionMap[action] || 'Invalid input';
 }
 
+// Function to handle button selection for hand type
+function selectHandType(type) {
+    document.querySelectorAll('.hand-type-button').forEach(button => button.classList.remove('active'));
+    document.getElementById(type).classList.add('active');
+    updatePlaceholder(type);
+}
+
 // Function to update placeholder based on hand type selection
-function updatePlaceholder() {
-    const handType = document.getElementById('hand-type').value;
+function updatePlaceholder(type) {
     const handValueInput = document.getElementById('hand-value');
-    
-    if (handType === 'hard') {
+    if (type === 'hard') {
         handValueInput.placeholder = "e.g., 16";
-    } else if (handType === 'soft') {
+    } else if (type === 'soft') {
         handValueInput.placeholder = "e.g., A,7";
-    } else if (handType === 'pair') {
+    } else if (type === 'pair') {
         handValueInput.placeholder = "Pairs of ? (e.g., 6)";
     }
 }
 
+// Set the initial hand type to "hard" by default
+selectHandType('hard');
+
 // Event listener to get the result
 document.getElementById('get-strategy').addEventListener('click', () => {
-    const playerHandType = document.getElementById('hand-type').value;
+    const playerHandType = document.querySelector('.hand-type-button.active').id;
     const playerHandValue = document.getElementById('hand-value').value;
     const dealerCard = document.getElementById('dealer-card').value;
 
