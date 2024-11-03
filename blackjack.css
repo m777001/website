@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #2e2e2e;
+    padding: 30px 40px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    border: 2px solid #b88b4a;
+}
+
+h1 {
+    color: #f4d03f;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 5px rgba(255, 215, 0, 0.5);
+    border-bottom: 2px solid #b88b4a;
+    padding-bottom: 10px;
+    animation: glow 2s infinite ease-in-out;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #b88b4a;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    background-color: #3e3e3e;
+    color: #ffffff;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border: 1px solid #f4d03f;
+    box-shadow: 0px 0px 8px rgba(255, 215, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Hand Type Buttons */
+.hand-type-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.hand-type-button {
+    padding: 12px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #3e3e3e;
+    border: 1px solid #b88b4a;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hand-type-button:hover {
+    background-color: #b88b4a;
+}
+
+.hand-type-button.active {
+    background-color: #f4d03f;
+    color: #1a1a1a;
+    font-weight: 700;
+    box-shadow: 0px 5px 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Result Display */
+.result {
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #f4d03f;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #3e3e3e;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Input Guide */
+.input-guide {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #3e3e3e;
+    color: #f1f1f1;
+    border-radius: 8px;
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: left;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #b88b4a;
+}
+
+.input-guide h3 {
+    font-size: 1.1em;
+    color: #f4d03f;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.input-guide ul {
+    list-style: none;
+    padding: 0;
+}
+
+.input-guide li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+/* Smooth transitions and animation */
+@keyframes glow {
+    0% { box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.6); }
+    100% { box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.4); }
+}
