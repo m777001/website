@@ -40,6 +40,16 @@ body {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
 }
 
+/* Styling for the passphrase image */
+.passphrase-container .passphrase-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+
 .passphrase-container h2 {
     margin-bottom: 15px;
     font-size: 1.5em;
